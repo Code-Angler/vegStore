@@ -1,11 +1,11 @@
-package com.test.vegstore;
+package com.test.vegstore.controller;
 
-import com.test.vegstore.exception.ApiException;
+import com.test.vegstore.dto.HeaderDto;
 import com.test.vegstore.exception.ApiRequestException;
+import com.test.vegstore.service.FruitsService;
+import com.test.vegstore.service.VegetablesService;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -16,12 +16,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class vefSearchController {
+public class productsController {
     private final FruitsService fruitsService;
     private final VegetablesService vegetablesService;
 
     @GetMapping("/fruits")
-    public ResponseEntity<JSONObject> selectFruits() throws Exception{
+    public ResponseEntity<JSONObject> selectFruits() throws Exception {
         return ResponseEntity.ok().body(fruitsService.selectFruits());
     }
 
@@ -39,7 +39,7 @@ public class vefSearchController {
     }
 
     @GetMapping("/vegetables")
-    public ResponseEntity<HeaderDto> selectVegetables() throws Exception{
+    public ResponseEntity<HeaderDto> selectVegetables() throws Exception {
         return ResponseEntity.ok().body(vegetablesService.selectVegetables());
     }
 
@@ -52,7 +52,7 @@ public class vefSearchController {
 
     @GetMapping("/vegetables/products")
     public ResponseEntity<JSONObject> searchVegetables(@RequestHeader String Authorization,
-                                                   @RequestParam("name") String name) throws ApiRequestException {
+                                                       @RequestParam("name") String name) throws ApiRequestException {
         return ResponseEntity.ok().body(vegetablesService.searchVegetables(Authorization, name));
     }
 }

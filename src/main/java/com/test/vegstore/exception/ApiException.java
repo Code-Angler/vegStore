@@ -11,7 +11,7 @@ public class ApiException {
     private final HttpStatus httpStatus;
 
     @Builder
-    public ApiException(String message, HttpStatus httpStatus){
+    public ApiException(String message, HttpStatus httpStatus) {
         this.message = message;
         this.httpStatus = httpStatus;
     }

@@ -1,8 +1,7 @@
-package com.test.vegstore;
+package com.test.vegstore.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
